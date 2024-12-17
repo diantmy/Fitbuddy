@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Is Your Goal?</title>
+  <script src="https://unpkg.com/react/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <style>
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      align-items: center;
+      color: black;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .back-button:hover {
+      color: #555;
+    }
+    .goal-option {
+      padding: 12px 20px;
+      margin-bottom: 10px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .goal-option:hover {
+      background-color: #ffefef;
+      border-color: #ef4444;
+    }
+    .goal-option.selected {
+      background-color: #ffe5e5;
+      border-color: #ef4444;
+    }
+  </style>
+</head>
+<body class="bg-white">
+  <div id="root"></div>
+  <script type="text/babel">
+    function App() {
+      const [selectedGoal, setSelectedGoal] = React.useState(null);
+
+      const goals = [
+        "Lose Weight",
+        "Gain Weight",
+        "Muscle Mass Gain",
+        "Shape Body",
+        "Others",
+      ];
+
+      const handleGoalSelect = (goal) => {
+        setSelectedGoal(goal);
+      };
+
+      const handleContinue = () => {
+        if (!selectedGoal) {
+          alert("Please select a goal to continue!");
+          return;
+        }
+        // Redirect to actlevel.html
+        window.location.href = "actlevel.html";
+      };
+
+      return (
+        <div className="flex flex-col items-center justify-center min-h-screen bg-white relative">
+          {/* Back Button */}
+          <div
+            className="back-button"
+            onClick={() => window.location.href = "height.html"}
+          >
+            <i className="fas fa-arrow-left mr-2"></i>
+            <span className="text-lg font-medium hover:text-gray-600 transition">Back</span>
+          </div>
+
+          {/* Main Content */}
+          <div className="w-full max-w-md p-4">
+            <h1 className="text-2xl font-bold text-center mb-4 text-gray-800">
+              What Is Your Goal?
+            </h1>
+            <p className="text-center text-sm bg-red-100 p-3 rounded mb-6 text-gray-700">
+              Select your primary fitness goal so we can create a personalized plan that aligns with your aspirations.
+            </p>
+
+            {/* Goal Options */}
+            <div className="mb-6">
+              {goals.map((goal, index) => (
+                <div
+                  key={index}
+                  className={`goal-option ${selectedGoal === goal ? "selected" : ""}`}
+                  onClick={() => handleGoalSelect(goal)}
+                >
+                  {goal}
+                </div>
+              ))}
+            </div>
+
+            {/* Continue Button */}
+            <div className="flex justify-center">
+              <button
+                className="bg-red-500 text-white text-lg font-bold py-2 px-10 rounded-full shadow-md hover:bg-red-600 transition"
+                onClick={handleContinue}
+              >
+                Continue
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById("root"));
+  </script>
+</body>
+</html>

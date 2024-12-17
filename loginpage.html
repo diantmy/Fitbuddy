@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FitBuddy Login and Sign Up</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 450px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .header {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            padding: 20px;
+            color: white;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 24px;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .button-group button {
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .button-group .login-btn {
+            background-color: #ff4b2b;
+            color: white;
+        }
+        .button-group .signup-btn {
+            background-color: white;
+            color: #ff4b2b;
+            border: 1px solid #ff4b2b;
+        }
+        .input-group {
+            margin: 20px 0;
+            text-align: left;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            font-size: 14px;
+        }
+        .input-group .password-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .input-group .password-group input {
+            flex: 1;
+        }
+        .input-group .password-group .fa-eye {
+            cursor: pointer;
+        }
+        .forgot-password {
+            text-align: right;
+            font-size: 12px;
+            color: #aaa;
+            cursor: pointer;
+        }
+        .login-button, .signup-button {
+            background-color: #ff4b2b;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin: 20px 0;
+        }
+        .social-login {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .social-login img {
+            width: 40px;
+            height: 40px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .button-group .active-btn {
+            background-color: #ff4b2b;
+            color: white;
+        }
+        .button-group .inactive-btn {
+            background-color: white;
+            color: #ff4b2b;
+            border: 1px solid #ff4b2b;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 767px) {
+            .header {
+                font-size: 42px;
+                padding: 40px;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+            }
+            .button-group button {
+                padding: 20px;
+                font-size: 22px;
+            }
+            .input-group input {
+                font-size: 30px;
+                padding: 20px;
+            }
+            .login-button, .signup-button {
+                font-size: 22px;
+                padding: 20px;
+            }
+            .social-login img {
+                width: 60px;
+                height: 60px;
+            }
+            .tab-content {
+                font-size: 26px;
+                padding: 20px;
+            }
+            .container {
+                padding: 40px;
+            }
+            body {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            FITBUDDY
+        </div>
+        <div class="button-group">
+            <button class="login-btn active-btn" onclick="showTab('login')">
+                Log In
+            </button>
+            <button class="signup-btn inactive-btn" onclick="showTab('signup')">
+                Sign Up
+            </button>
+        </div>
+        <div class="tab-content active" id="login">
+            <div class="input-group">
+                <input placeholder="Enter Email or Username" type="text"/>
+                <div class="password-group">
+                    <input placeholder="Enter Password" type="password"/>
+                    <i class="fas fa-eye"></i>
+                </div>
+            </div>
+            <div class="forgot-password">
+                Forgot Password?
+            </div>
+            <button class="login-button">
+                Log In
+            </button>
+            <div>
+                Or
+            </div>
+            <div class="social-login">
+                <img alt="Facebook logo" height="40" src="https://storage.googleapis.com/a1aa/image/eG3ey9X0U5lW1EZz8gLYb2NbeskMpf3f2JffapPkXjocFVo2JA.jpg" width="40"/>
+                <img alt="Google logo" height="40" src="https://storage.googleapis.com/a1aa/image/p5WBqo6RBbqqCB23ADv5r84JhSjz3hqDsHhTl6fdHliDVo2JA.jpg" width="40"/>
+                <img alt="X logo" height="40" src="https://storage.googleapis.com/a1aa/image/k7n5gC5WfvTtaq92R3NpdO7ln61uUHhD9EeqKoiy7inIqQtTA.jpg" width="40"/>
+            </div>
+        </div>
+        <div class="tab-content" id="signup">
+            <div class="input-group">
+                <input placeholder="Enter Email" type="text"/>
+                <input placeholder="Enter Username" type="text"/>
+                <div class="password-group">
+                    <input placeholder="Enter Password" type="password"/>
+                    <i class="fas fa-eye"></i>
+                </div>
+                <div class="password-group">
+                    <input placeholder="Confirm Password" type="password"/>
+                    <i class="fas fa-eye"></i>
+                </div>
+            </div>
+            <button class="signup-button" onclick="window.location.href='gender.html'">
+                Sign Up
+            </button>
+            <div>
+                Or
+            </div>
+            <div class="social-login">
+                <img alt="Facebook logo" height="40" src="https://storage.googleapis.com/a1aa/image/eG3ey9X0U5lW1EZz8gLYb2NbeskMpf3f2JffapPkXjocFVo2JA.jpg" width="40"/>
+                <img alt="Google logo" height="40" src="https://storage.googleapis.com/a1aa/image/p5WBqo6RBbqqCB23ADv5r84JhSjz3hqDsHhTl6fdHliDVo2JA.jpg" width="40"/>
+                <img alt="X logo" height="40" src="https://storage.googleapis.com/a1aa/image/k7n5gC5WfvTtaq92R3NpdO7ln61uUHhD9EeqKoiy7inIqQtTA.jpg" width="40"/>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(function(content) {
+                content.classList.remove('active');
+            });
+            document.getElementById(tab).classList.add('active');
+
+            if (tab === 'login') {
+                document.querySelector('.login-btn').classList.add('active-btn');
+                document.querySelector('.login-btn').classList.remove('inactive-btn');
+                document.querySelector('.signup-btn').classList.add('inactive-btn');
+                document.querySelector('.signup-btn').classList.remove('active-btn');
+            } else {
+                document.querySelector('.signup-btn').classList.add('active-btn');
+                document.querySelector('.signup-btn').classList.remove('inactive-btn');
+                document.querySelector('.login-btn').classList.add('inactive-btn');
+                document.querySelector('.login-btn').classList.remove('active-btn');
+            }
+        }
+
+        // Password visibility toggle
+        document.querySelectorAll('.fa-eye').forEach(function(eye) {
+            eye.addEventListener('click', function() {
+                const input = this.previousElementSibling;
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    this.classList.remove('fa-eye');
+                    this.classList.add('fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    this.classList.remove('fa-eye-slash');
+                    this.classList.add('fa-eye');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

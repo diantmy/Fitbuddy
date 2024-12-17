@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitBuddy - Welcome</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Press Start 2P', cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #ff0000, #ff4d4d);
+            color: white;
+        }
+        .container {
+            text-align: center;
+        }
+        .title {
+            font-size: 2em;
+        }
+        @media (max-width: 600px) {
+            .title {
+                font-size: 1.5em; /* Smaller font size for phones */
+            }
+        }
+        @media (max-width: 900px) {
+            .title {
+                font-size: 1.75em; /* Medium font size for tablets */
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script>
+        // Redirect to loginpage.html after 3 seconds
+        setTimeout(function() {
+            window.location.href = 'loginpage.html';
+        }, 3000); // 3000 milliseconds = 3 seconds
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="title">FITBUDDY</div>
+    </div>
+</body>
+</html>

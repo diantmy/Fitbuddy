@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Physical Activity Level</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            color: black;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .back-button:hover {
+            color: #555;
+        }
+        .level-button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #6D28D9;
+            background-color: #F3F4F6;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .level-button:hover {
+            background-color: #E5E7EB;
+            transform: scale(1.02);
+        }
+        .level-button:focus {
+            outline: 2px solid #6D28D9;
+            outline-offset: 4px;
+        }
+        .continue-button {
+            background-color: #EF4444;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .continue-button:hover {
+            background-color: #DC2626;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <div id="root"></div>
+    <script type="text/babel">
+        function App() {
+            const [selectedLevel, setSelectedLevel] = React.useState("");
+
+            const handleLevelSelection = (level) => {
+                setSelectedLevel(level);
+            };
+
+            const handleContinue = () => {
+                if (selectedLevel) {
+                    // Replace with your desired redirection page
+                    window.location.href = "dashboard.html";
+                } else {
+                    alert("Please select a level to continue.");
+                }
+            };
+
+            return (
+                <div className="flex flex-col items-center justify-center min-h-screen bg-white relative">
+                    {/* Back Button */}
+                    <div className="back-button" onClick={() => window.location.href = 'purpose.html'}>
+                        <i className="fas fa-arrow-left mr-2"></i>
+                        <span className="text-lg">Back</span>
+                    </div>
+
+                    {/* Main Content */}
+                    <div className="w-full max-w-md p-4">
+                        <h1 className="text-2xl font-bold text-center mb-2">Physical Activity Level</h1>
+                        <p className="text-center text-sm bg-red-100 p-2 rounded mb-4">
+                            Help us understand your current lifestyle by selecting your typical activity level throughout the week. This will help us calculate the right intensity level and create a program that matches your experience, from beginner to advanced fitness enthusiast.
+                        </p>
+
+                        {/* Level Options */}
+                        <div className="flex flex-col space-y-4 mb-6">
+                            {["Beginner", "Intermediate", "Advance"].map((level) => (
+                                <button
+                                    key={level}
+                                    className={`level-button ${
+                                        selectedLevel === level ? "ring-2 ring-purple-500" : ""
+                                    }`}
+                                    onClick={() => handleLevelSelection(level)}
+                                >
+                                    {level}
+                                </button>
+                            ))}
+                        </div>
+
+                        {/* Continue Button */}
+                        <div className="flex justify-center">
+                            <button
+                                className="continue-button"
+                                onClick={handleContinue}
+                            >
+                                Continue
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
